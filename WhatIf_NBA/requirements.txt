@@ -1,0 +1,6 @@
+streamlit
+requests
+pytz
+python-dateutil
+nba_api
+plotly
