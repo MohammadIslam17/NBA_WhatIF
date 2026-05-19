@@ -1,85 +1,154 @@
-# NBA What If Simulator
+# 🏀 NBA Daily Scoreboard & Win Probability Analyzer
 
-An **AI-powered trading mentor** that helps beginners learn safe stock trading practices.  
-By combining real market data with **Large Language Models (LLMs)**, the system generates simple strategies, explains the reasoning behind them, and teaches users how to manage risk like a coach with “training wheels.”  
+An interactive NBA dashboard that combines live game data, team analytics, injury reports, and AI-style “what-if” scenario analysis into a beginner-friendly basketball analytics platform.
+
+Built with Streamlit and powered by live APIs, the app allows users to track NBA games in real time, compare team performance, and simulate hypothetical game situations to better understand how different factors influence win probability. 
 
 ---
 
-## 🚀 Project Overview  
+## 🚀 Project Overview
 
-Most trading platforms overwhelm beginners with jargon and complex charts. **Stock Trading Mentor** bridges that gap by:  
-- Generating **plain-language trading strategies**.  
-- Backtesting ideas on historical data to check if they actually work.  
-- Explaining concepts with analogies, charts, and Q&A.  
-- Teaching risk management and portfolio diversification.  
+Most sports scoreboards only show scores and schedules. This project goes further by turning NBA data into an interactive analytics experience.
 
-**Our goal**: Make stock trading a learning experience, not just a guessing game.  
+The NBA Daily Scoreboard:
+
+Displays live and scheduled NBA games.
+- Calculates pre-game and live win probabilities.
+- Factors in team performance and injuries.
+- Lets users test hypothetical scenarios like:
+- “What if the home team scores 8 more points?”
+- “What if Giannis is ruled out?”
+- Presents team statistics in a clean visual dashboard.
+
+Goal: Make basketball analytics accessible, interactive, and easy to understand for casual fans and beginners.
 
 ---
 
 ## 🛠️ Core Features  
 
-### 📑 Strategy Generator (LLM-Powered)  
-- Takes stock data, user preferences, and sentiment signals.  
-- Produces **clear entry/exit rules, stop-losses, and position sizing**.  
-- Explains the reasoning in simple terms.  
+### 📅 Daily NBA Scoreboard
+- Fetches NBA games for a selected date using the BallDontLie API.
+- Displays:
+  - Home & away teams
+  - Team logos
+  - Live scores
+  - Game status (Final, Halftime, Quarter, Not Started)
+- Optional auto-refresh every 30 seconds for live tracking.
 
-### 📊 Simulation & Backtesting  
-- Uses **historical data** (via yFinance, Alpaca, Polygon.io).  
-- Runs strategies through engines like Backtrader/Zipline.  
-- Outputs performance metrics (Win Rate, Sharpe Ratio, Max Drawdown).  
-- Provides beginner-friendly explanations and equity charts.  
+### 📊 Win Probability Engine
+- Generates:
+  - Pre-game win probabilities
+  - Live in-game win probabilities
+- Uses:
+  - Team season performance
+  - Win/loss records
+  - Points per game
+  - Home-court advantage
+  - Live score margin
+- Displays probabilities visually with dynamic progress bars.
 
-### 📰 Sentiment & News Integration  
-- Analyzes news headlines, Reddit, and Twitter for bullish/bearish signals.  
-- Converts raw sentiment into **plain English summaries** and trend charts.  
+### 🏥 Injury Impact Analysis
+- Pulls live injury data from FantasyNerds API.
+- Automatically adjusts team strength ratings based on:
+  - Out
+  - Doubtful
+  - Questionable
+  - Day-to-day statuses
+- Shows which injuries were factored into calculations. 
 
-### 🎓 Beginner-Friendly Education  
-- Plain-language lessons, glossary, and analogies.  
-- Interactive Q&A with adjustable explanation depth (“Explain like I’m 12”).  
-- Visual education: highlights, arrows, charts, flashcards.  
+### 🧠 What-If Scenario Simulator
 
-### 🛡️ Risk & Portfolio Guidance  
-- Teaches stop-loss and take-profit rules.  
-- Recommends diversification and safe position sizing.  
-- Assigns risk scores (Green = safe, Red = high risk).  
+Users can simulate custom scenarios using natural language input.
 
-### 🤖 Interactive Q&A  
-- Users can ask: *“What does RSI mean?”*, *“Is Tesla a good buy this week?”*.  
-- Context-aware answers with charts, analogies, and multiple levels of detail.  
+Examples:
 
-### 🎮 Gamification / Practice Mode *(Future)*  
-- Paper trading mode to practice strategies without risking real money.  
-- Badges and achievements for mastering key trading lessons.  
+- “Home team +5 points”
+- “Away scores 8 points”
+- “Steph Curry is out”
+
+The system:
+
+- Parses the text input
+- Adjusts score or team ratings
+- Recalculates win probabilities instantly
+- Explains what changes were applied
+
+### 📈 Team Analytics Dashboard
+
+Displays season averages using NBA.com statistics via nba_api:
+
+- Points per game
+- Rebounds per game
+- Assists per game
+- 2PT shooting percentage
+- 3PT shooting percentage
+- Win/loss records
+- Games played
+
+Each team is shown in visually styled stat cards with logos and summaries.
+
+### 🔄 Live Updating Interface
+- Built with Streamlit for a fast interactive dashboard.
+- Supports:
+  - Sidebar controls
+  - Date selection
+  - Auto-refresh
+  - Responsive layouts
+  - Dynamic game detail pages 
 
 ---
 
 ## ⚙️ Tech Stack  
 
-- **Frontend:** Web-based dashboard (charts, visualizations, user input).  
-- **Backend:** Python (Pandas, Backtrader, Zipline).  
-- **APIs:** yFinance, Polygon.io, Reddit API, Twitter API, News API.  
-- **AI:** LLMs for strategy generation, FinBERT/VADER for sentiment analysis.  
+Frontend
+- Streamlit
+- Plotly
+- Custom HTML/CSS styling
+  
+Backend
+- Python
+- Pandas
+- Requests
+  
+APIs & Data Sources
+- BallDontLie API (live games/scores)
+- NBA API / NBA.com stats
+- FantasyNerds API (injuries)
+  
+Analytics
+- Custom logistic win probability model
+- Scenario simulation engine
+- Injury-adjusted team rating system  
 
 ---
 
 ## 📅 Project Roadmap  
 
-**Phase 1:** Connect stock data, build initial LLM, basic dashboard.  
-**Phase 2:** Add sentiment analysis, beginner education, and risk guidance.  
-**Phase 3:** Implement backtesting engine and interactive charts.  
-**Phase 4:** Paper trading mode, performance explanations.  
-**Phase 5:** Final polish, testing, and deployment.  
-
----
-
-## 👥 Team  
-
-- Conor Long  
-- Josh Wufsus  
-- Mohammad Islam  
+Phase 1
+- Connect NBA game data APIs
+- Build scoreboard UI
+- Add team logos and live score updates
+  
+Phase 2
+- Implement season analytics dashboard
+- Add win probability calculations
+- Build game detail pages
+  
+Phase 3
+- Add injury integration and rating adjustments
+- Develop what-if scenario parser
+  
+Phase 4
+- Improve probability modeling
+- Add probability history charts and visual analytics
+  
+Phase 5
+- Advanced simulations
+- Player-level statistical impacts
+- Deployment and production optimization
 
 ---
 
 ## 📌 Disclaimer  
-This project is for **educational purposes only**. It is not financial advice. Users should consult a licensed professional before making real investment decisions.  
+This project is for educational and analytical purposes only.
+Win probabilities and simulations are estimates based on statistical models and do not guarantee actual game outcomes.  
